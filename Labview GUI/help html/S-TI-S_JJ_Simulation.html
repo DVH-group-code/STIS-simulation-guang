@@ -1,0 +1,562 @@
+<HTML>
+<HEAD>
+<TITLE>S-TI-S JJ Simulation.vi</TITLE>
+<META NAME="Author" CONTENT="">
+<META NAME="GENERATOR" CONTENT="G Development Environment">
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<A NAME="S_TI_S JJ Simulation.vi"></A><H2>S-TI-S JJ Simulation.vi</H2>
+<P>1. before run, set the paramaters on the left of the screen.</P>
+<P>2. flux (magnetic field) is in unit of flux quanta.</P>
+<P>3. Phaserange is in the unit of Pi, the CPR will be build up according to phase range of [-Phaserange/2,Phaserang/2], and such CPR will be  a periodic function with Phaserange as period. Enter integer number  of multiple times of 4 is preferred.</P>
+<P>4. Use the step setting tab to set resolution of the calculation, you can set how many points is used to define the width of the Josephson junction, how many points to represent the Phaserange</P>
+<P>5. Then you can choose which type of the CPR is used.</P>
+<P>6. Depending on the choose of the CPR, you may want to set the strength of the MBS, &quot;a&quot; parameter, the width of the gaussian function used, and the pattern of parity of MBS. Parity pattern has to have same number of elements for positive and negative range.</P>
+<P>Enter the parity 1 or -1 for positive and negative phase +-Pi, +-3Pi, +-5Pi etc.. in to the two arrays.</P>
+<P>7. You can use the index control to read the array elements, then enter the value, you can also delete an element of array by right click, the number of array elements is not limited.</P>
+<P>8. You can change the x,y range, zoom, create cursor etc. to help analyse the plot. Right click to save the data into excel.</P>
+<P></P>
+<P>Enjoy!</P>
+<P>Guang Yue</P>
+<P>gyue@illinois.edu</P>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cdbl.png" ALT="cdbl"></P>
+</TD>
+<TD>
+<B>flux start</B> <P>Set the flux lower bound for calculation</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cdbl.png" ALT="cdbl"></P>
+</TD>
+<TD>
+<B>flux end</B> <P>Set flux upper bound for calculation</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cdbl.png" ALT="cdbl"></P>
+</TD>
+<TD>
+<B>flux step</B> <P>Set flux step resolution.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>stop</B> <P>Stop the calculation of diffraction pattern, phase0</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ci32.png" ALT="ci32"></P>
+</TD>
+<TD>
+<B>Geometry steps</B> <P>Number of data points describe the y dimension of the JJ</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cenum.png" ALT="cenum"></P>
+</TD>
+<TD>
+<B>CPR Type</B> <P>Choose type of CPR: regular Josephson effect, non-local MBS, local MBS with same parity, local MBS with different parity for each MBS.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cenum.png" ALT="cenum"></P>
+</TD>
+<TD>
+<B>Tab Control</B> </TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ci32.png" ALT="ci32"></P>
+</TD>
+<TD>
+<B>Phase steps</B> <P>Data points describe the Phase space, [-PhaseRange/2, PhaseRange/2].</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cdbl.png" ALT="cdbl"></P>
+</TD>
+<TD>
+<B>Gaussian width</B> <P>Gaussian function width to localize the MBS.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="c1di32.png" ALT="c1di32"></P>
+</TD>
+<TD>
+<B>parity for positive phase</B> <P>Set up the positive phase range parity of the MBS at location +Pi, +3Pi etc. Use the index control on the left to move the display of the array elements. Set the element by enter the value, right click to remove the element.</P>
+</TD>
+</TR>
+</Table>
+<UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ci32.png" ALT="ci32"></P>
+</TD>
+<TD>
+<B>parity</B> </TD>
+</TR>
+</Table>
+</UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cdbl.png" ALT="cdbl"></P>
+</TD>
+<TD>
+<B>Strenth of MBS</B> <P>Strength of the MBS, &quot;a&quot; parameter of the Sin(f/2) term.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="c1di32.png" ALT="c1di32"></P>
+</TD>
+<TD>
+<B>parity for negative phase </B> <P>Set up the negative phase range parity of the MBS at location -5Pi, -3Pi,-Pi  etc. Use the index control on the left to move the display of the array elements. Set the element by enter the value, right click to remove the element.</P>
+</TD>
+</TR>
+</Table>
+<UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ci32.png" ALT="ci32"></P>
+</TD>
+<TD>
+<B>parity</B> </TD>
+</TR>
+</Table>
+</UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>Run</B> <P>Click to Run the calculation of the diffraction pattern according to the parameters set below. The plots of diffraction pattern, and the phase0 vs flux will be updated during calculation.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>Exit</B> <P>Exit this program, cloase the app.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>hold</B> <P>Check this to keep the current plot in the next run, such that you can compare plots between different runs.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>Save</B> <P>Click to save data on the current shown plots. To choose plots, select the interested Tab. The data will be saved as columns of x, y1,y2,y3</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cenum.png" ALT="cenum"></P>
+</TD>
+<TD>
+<B>Plot tab</B> <P>Choose the tab to select current plots in the data save process.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cu16.png" ALT="cu16"></P>
+</TD>
+<TD>
+<B>Geometry Disorder Type</B> <P>Choose geometry disorder type for the current density profile along the y direction. &quot;OFF&quot; assume uniform density of current along the junction.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>Plot CPR</B> <P>Plot CPR according to current setting in the CPR tab.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>Plot J vs y</B> <P>Plot supercurrent vs y position based on the last diffraction pattern calculation.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ci32.png" ALT="ci32"></P>
+</TD>
+<TD>
+<B>CPR plot points</B> <P>Data points needed in the CPR plot.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>clear All</B> <P>Clear all plots in all the tabs</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>clear tab</B> <P>Clear all plots in the current Tab.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>clear cpr</B> <P>Clear the last plotted curve in the current tab of plots.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cenum.png" ALT="cenum"></P>
+</TD>
+<TD>
+<B>Plot choice</B> <P>Choose the data the J vs y plot based on. You can choose the positive or negative diffraction pattern in the last run.</P>
+</TD>
+</TR>
+</Table>
+<UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>Icp</B> </TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>Icn</B> </TD>
+</TR>
+</Table>
+</UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cdbl.png" ALT="cdbl"></P>
+</TD>
+<TD>
+<B>Flux</B> <P>The flux for the J vs y plot</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="cbool.png" ALT="cbool"></P>
+</TD>
+<TD>
+<B>Set Noise</B> <P>Open up a window to setup noise pattern. Click this button will automatically choose the &quot;Noise ON&quot;</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ierrcodeclst.png" ALT="ierrcodeclst"></P>
+</TD>
+<TD>
+<B>error out[error out]</B> <P>This icon will show any errors during the run.</P>
+</TD>
+</TR>
+</Table>
+<UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ibool.png" ALT="ibool"></P>
+</TD>
+<TD>
+<B>status</B> <P></P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ii32.png" ALT="ii32"></P>
+</TD>
+<TD>
+<B>code</B> <P></P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="istr.png" ALT="istr"></P>
+</TD>
+<TD>
+<B>source</B> <P></P>
+</TD>
+</TR>
+</Table>
+</UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B>Ic positive</B> <P>Ic positive in the current calculation</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B>Ic negative</B> <P>Ic negative in the current calculation</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="i1dcclst.png" ALT="i1dcclst"></P>
+</TD>
+<TD>
+<B>Diffraction pattern plot</B> </TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B>Total time s</B> <P>Total time spent since the start of the calculation.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ii32.png" ALT="ii32"></P>
+</TD>
+<TD>
+<B>phaserange in Pi</B> <P>PhaseRange in the calculation, the CPR will be a periodic function of [-PhaseRange/2, PhaseRange/2] range. This value is decide by the choose of CPR type.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="ii32.png" ALT="ii32"></P>
+</TD>
+<TD>
+<B>Remaining steps</B> <P>Remaining steps of the diffraction pattern calculation.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B>Current Flux</B> <P>Current flux to calculate diffraciton pattern.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B>Positive Phase0</B> <P>Optimized the phase0 in the positive critical current calculation.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B>Negative Phase0</B> <P>Optimized the phase0 in the negative critical current calculation.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="i1dcclst.png" ALT="i1dcclst"></P>
+</TD>
+<TD>
+<B>Phase0 vs Flux</B> </TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="i1dcclst.png" ALT="i1dcclst"></P>
+</TD>
+<TD>
+<B>J vs y</B> </TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="i1dcclst.png" ALT="i1dcclst"></P>
+</TD>
+<TD>
+<B>CPR</B> </TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B>Actual flux</B> <P>Actual flux used for the plot, which is reduced to the actual flux of a data point.</P>
+</TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="icclst.png" ALT="icclst"></P>
+</TD>
+<TD>
+<B>Current Disorder</B> </TD>
+</TR>
+</Table>
+<UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B>Step width</B> </TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B>App</B> </TD>
+</TR>
+</Table>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="i1ddbl.png" ALT="i1ddbl"></P>
+</TD>
+<TD>
+<B>Array</B> </TD>
+</TR>
+</Table>
+<UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="idbl.png" ALT="idbl"></P>
+</TD>
+<TD>
+<B></B> </TD>
+</TR>
+</Table>
+</UL>
+</UL>
+<Table>
+<TR valign=TOP>
+<TD>
+<P><IMG SRC="i2ddbl.png" ALT="i2ddbl"></P>
+</TD>
+<TD>
+<B>Disorder</B> </TD>
+</TR>
+</Table>
+<HR>
+<H3>Iconified Cluster Constants</H3>
+</BODY>
+</HTML>

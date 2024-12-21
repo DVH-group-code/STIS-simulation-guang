@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=S-TI-S_JJ_Simulation Help.chm
+Default Window=size
+Default topic=S-TI-S_JJ_Simulation.html
+Display compile progress=No
+Language=0x409 English (United States)
+
+[WINDOWS]
+size=,,,"S-TI-S_JJ_Simulation.html",,,,,,0x2000,,0x3006,[622,97,1322,900],,,,,,,0
+
+
+[FILES]
+S-TI-S_JJ_Simulation.html
+
+[INFOTYPES]
+
